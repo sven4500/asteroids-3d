@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class UFOTrigger: MonoBehaviour {
 
-    void Awake() {
-        _sadText.SetActive(false);
-    }
-
     void OnTriggerEnter(Collider col) {
-        if(col.gameObject.tag == "Enemy") {
-            _sadText.SetActive(true);
+        if(col.gameObject.tag == "Enemy") {			
+			TextMesh textMesh = _gameOverText.GetComponent<TextMesh>();
+			textMesh.text = string.Format("Game over! Your score is {0}", UpdateScore.GetScore());
+			
+            _gameOverText.SetActive(true);
         }
     }
 
-    public GameObject _sadText;
+    public GameObject _gameOverText = null;
 
 }

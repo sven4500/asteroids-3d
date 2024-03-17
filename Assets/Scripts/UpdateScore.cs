@@ -21,6 +21,10 @@ public class UpdateScore: MonoBehaviour {
 		}
 	}
 	
+	public static int GetScore() {
+		return _score;
+	}
+	
 	public static void IncrementScore() {
 		_score++;
 		UpdateScoreLabel();
