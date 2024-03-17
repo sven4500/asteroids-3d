@@ -7,6 +7,11 @@ public class LaserMovement: MonoBehaviour {
     void Awake() {
         _rb = GetComponent<Rigidbody>();
 		_speed = Random.Range(_speedMin, _speedMax);
+		
+		Vector3 scale = transform.localScale;
+		scale.y *= (_speed / (_speedMax - _speedMin));
+		
+		transform.localScale = scale;
     }
 
 	void Update() {
