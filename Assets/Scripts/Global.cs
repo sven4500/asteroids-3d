@@ -43,21 +43,36 @@ public class Global: MonoBehaviour {
 			
 			_scoreTimeout = 0.0f;
 		}
+		
+		if (!_gameOverText.activeSelf && GameOver) {
+			TextMesh textMesh = _gameOverText.GetComponent<TextMesh>();
+			textMesh.text = string.Format("Game over! Your score is {0}", Global.Score);
+			
+			_gameOverText.SetActive(true);
+		}
 	}
 	
+	private void UpdateScoreLabel() {
+        if(_UIDocument != null) {
+			Label scoreLabel = _UIDocument.rootVisualElement.Q<Label>("ScoreLabel");
+            scoreLabel.text = Score.ToString("D8");
+        }
+    }
+		
 	// Auto Score property
 	public static int Score {
 		get; set;
 	}
 	
-    private void UpdateScoreLabel() {
-        if(_doc != null) {
-			Label scoreLabel = _doc.rootVisualElement.Q<Label>("ScoreLabel");
-            scoreLabel.text = Score.ToString("D8");
-        }
-    }
-
-    public UIDocument _doc = null;
+	// You can set game over value only to true and only once
+	private static bool _gameOver = false;
+	public static bool GameOver {
+		get { return _gameOver; }
+		set { if (!_gameOver && value) _gameOver = value; }
+	}
+	
+    public UIDocument _UIDocument = null;
+	public GameObject _gameOverText = null;
 	
     public System.Single _respawnTime = 1.0F;
     public System.Single _distance = 50.0F;

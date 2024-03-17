@@ -577,7 +577,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac5aba509f1a0f34aa1037191db1b5b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _doc: {fileID: 678264662}
+  _UIDocument: {fileID: 678264662}
+  _gameOverText: {fileID: 1001916252}
   _respawnTime: 1.5
   _distance: 75
   _speedMin: 20
@@ -1606,7 +1607,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87d5c8cd03c81a946ac91efff8a1d18a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameOverText: {fileID: 1001916252}
 --- !u!114 &972436531
 MonoBehaviour:
   m_ObjectHideFlags: 0

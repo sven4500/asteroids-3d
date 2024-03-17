@@ -6,13 +6,8 @@ public class UFOTrigger: MonoBehaviour {
 
     void OnTriggerEnter(Collider col) {
         if(col.gameObject.tag == "Enemy") {			
-			TextMesh textMesh = _gameOverText.GetComponent<TextMesh>();
-			textMesh.text = string.Format("Game over! Your score is {0}", Global.Score);
-			
-            _gameOverText.SetActive(true);
+			Global.GameOver = true;
         }
     }
-
-    public GameObject _gameOverText = null;
 
 }
