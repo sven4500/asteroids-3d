@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Global: MonoBehaviour {
 
     void Awake() {
         _timeout = _respawnTime;
+		UpdateScoreLabel();
     }
 
 	void LateUpdate() {
@@ -23,7 +25,7 @@ public class Global: MonoBehaviour {
 
             GameObject obj = (GameObject)Instantiate(Resources.Load("Rock" + Random.Range(1, 4)), pos, Quaternion.identity);
 
-            // Задаём произвольную скорость камню.
+            // Give asteroid a random velocity
             RockMovement rock = obj.GetComponent<RockMovement>();
             rock._speed = Random.Range(_speedMin, _speedMax);
             rock._rotationSpeed = Random.Range(_rotationSpeedMin, _rotationSpeedMax);
@@ -31,7 +33,32 @@ public class Global: MonoBehaviour {
             _timeout = 0.0F;
         }
 	}
+		
+	void Update() {
+		_scoreTimeout += Time.deltaTime;
+		
+		if (_scoreTimeout > 1.0f) {
+			Score++;
+			UpdateScoreLabel();
+			
+			_scoreTimeout = 0.0f;
+		}
+	}
+	
+	// Auto Score property
+	public static int Score {
+		get; set;
+	}
+	
+    private void UpdateScoreLabel() {
+        if(_doc != null) {
+			Label scoreLabel = _doc.rootVisualElement.Q<Label>("ScoreLabel");
+            scoreLabel.text = Score.ToString("D8");
+        }
+    }
 
+    public UIDocument _doc = null;
+	
     public System.Single _respawnTime = 1.0F;
     public System.Single _distance = 50.0F;
 
@@ -44,6 +71,7 @@ public class Global: MonoBehaviour {
     public System.Single _width = 10.0F;
     public System.Single _height = 10.0F;
 
-    private System.Single _timeout = 0.0F;
-
+    private float _timeout = 0.0F;
+	private float _scoreTimeout = 0.0f;
+	
 }

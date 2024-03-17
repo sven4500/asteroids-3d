@@ -13,7 +13,7 @@ public class LaserHit: MonoBehaviour {
             // то уничтожаем этот камень и уничтожаемся сами.
             GameObject.Destroy(other.gameObject);
             GameObject.Destroy(gameObject);
-            UpdateScore.IncrementScore();
+            Global.Score++;
         }
     }
 
