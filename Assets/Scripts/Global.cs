@@ -37,6 +37,10 @@ public class Global: MonoBehaviour {
 	void Update() {
 		_scoreTimeout += Time.deltaTime;
 		
+		// Change exposure of a skybox, what will change the brightness of the
+		// stars
+		RenderSettings.skybox.SetFloat("_Exposure", 0.3f + (Mathf.Sin(Time.time / 2) + 1.0f) / 3.0f);
+		
 		if (_scoreTimeout > 1.0f) {
 			Score++;
 			UpdateScoreLabel();
