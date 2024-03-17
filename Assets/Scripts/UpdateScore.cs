@@ -1,21 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class UpdateScore: MonoBehaviour {
 
     private void Awake() {
-        _text = GetComponent<Text>();
+        _doc = GetComponent<UIDocument>();
         setScore(0);
     }
 
     public static void setScore(System.UInt32 score) {
-        if(_text != null) {
-            _text.text = score.ToString("D8");
+        if(_doc != null) {
+			Label scoreLabel = _doc.rootVisualElement.Q<Label>("ScoreLabel");
+            scoreLabel.text = score.ToString("D8");
         }
     }
 
-    private static Text _text = null;
+    private static UIDocument _doc = null;
 
 }
