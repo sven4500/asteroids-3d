@@ -1627,8 +1627,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1001916252}
-  m_Text: "\u0418\u0433\u0440\u0430 \u043E\u043A\u043E\u043D\u0447\u0435\u043D\u0430,
-    \u0447\u0443\u0432\u0430\u043A..."
+  m_Text: Game over
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
