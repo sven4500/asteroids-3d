@@ -6,6 +6,7 @@ public class UFOFire: MonoBehaviour {
 
 	void Update() {
         _time += Time.deltaTime;
+		
 		if(_time > _fireRate && Input.GetKeyDown(KeyCode.Space) == true) {
 			Quaternion rot = Quaternion.identity;
 			rot.eulerAngles = new Vector3(90, 0, 0);
